@@ -21,9 +21,8 @@ cursor = connection.cursor()
 
 st.title("Email/SMS Spam Classifier")
 
-# Download required NLTK resources (you can comment this out after the first run)
-# nltk.download('stopwords')
-# nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('punkt')
 
 ps = PorterStemmer()
 
@@ -65,11 +64,6 @@ def load_model_from_db(model_name):
 # Load models from the database
 tfidf = load_model_from_db(r'C:\Users\saura\OneDrive\Documents\GitHub\SMS-fraud-detection\sms-fraud-detection\vectorizer.pkl')
 model = load_model_from_db(r'C:\Users\saura\OneDrive\Documents\GitHub\SMS-fraud-detection\sms-fraud-detection\model.pkl')
-
-
-
-tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
-model = pickle.load(open('model.pkl', 'rb'))
 
 
 input_sms = st.text_area('Enter the message')
