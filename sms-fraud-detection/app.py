@@ -33,6 +33,17 @@ def transform_text(text):
 
     return " ".join(y)
 
+
+
+import os
+
+# Check if the files exist
+if not os.path.exists('vectorizer.pkl'):
+    st.error("Error: 'vectorizer.pkl' file not found.")
+if not os.path.exists('model.pkl'):
+    st.error("Error: 'model.pkl' file not found.")
+
+
 tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
 model = pickle.load(open('model.pkl', 'rb'))
 
