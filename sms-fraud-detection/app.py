@@ -4,9 +4,13 @@ import string
 from nltk.corpus import stopwords
 import nltk
 from nltk.stem.porter import PorterStemmer
+import os
+
+# Ensure you have downloaded the required NLTK resources
+nltk.download('punkt')
+nltk.download('stopwords')
 
 ps = PorterStemmer()
-
 
 def transform_text(text):
     text = text.lower()
@@ -32,15 +36,23 @@ def transform_text(text):
 
     return " ".join(y)
 
-tfidf = pickle.load(open('vectorizer.pkl','rb'))
-model = pickle.load(open('model.pkl','rb'))
+# Load model and vectorizer with absolute paths
+current_dir = os.path.dirname(os.path.abspath(__file__))
+tfidf_path = os.path.join(current_dir, 'vectorizer.pkl')
+model_path = os.path.join(current_dir, 'model.pkl')
+
+try:
+    tfidf = pickle.load(open(tfidf_path, 'rb'))
+    model = pickle.load(open(model_path, 'rb'))
+except FileNotFoundError as e:
+    st.error(f"File not found: {e.filename}. Please ensure the file is in the correct directory.")
+    st.stop()
 
 st.title("Email/SMS Spam Classifier")
 
 input_sms = st.text_area("Enter the message")
 
 if st.button('Predict'):
-
     # 1. preprocess
     transformed_sms = transform_text(input_sms)
     # 2. vectorize
