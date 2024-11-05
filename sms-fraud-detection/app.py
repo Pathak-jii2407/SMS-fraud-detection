@@ -6,6 +6,8 @@ import psycopg2
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
+import warnings
+warnings.filterwarnings('ignore')
 
 hostname = 'dpg-csksslu8ii6s7380o05g-a.oregon-postgres.render.com'
 port = 5432
