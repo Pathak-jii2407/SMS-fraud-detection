@@ -5,6 +5,9 @@ import string
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
+
+st.title("Email/SMS Spam Classifier")
+
 # Download required NLTK resources (you can comment this out after the first run)
 # nltk.download('stopwords')
 # nltk.download('punkt')
@@ -35,19 +38,9 @@ def transform_text(text):
 
 
 
-import os
-
-# Check if the files exist
-if not os.path.exists('vectorizer.pkl'):
-    st.error("Error: 'vectorizer.pkl' file not found.")
-if not os.path.exists('model.pkl'):
-    st.error("Error: 'model.pkl' file not found.")
-
-
 tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
 model = pickle.load(open('model.pkl', 'rb'))
 
-st.title("Email/SMS Spam Classifier")
 
 input_sms = st.text_area('Enter the message')
 
