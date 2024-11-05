@@ -6,6 +6,7 @@ import psycopg2
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
+<<<<<<< HEAD
 # Database connection details
 hostname = 'dpg-csksslu8ii6s7380o05g-a.oregon-postgres.render.com'
 port = 5432
@@ -16,6 +17,12 @@ password = 'p3Qtz54g2Btije8jb4BCjuEKJWSoGyTA'
 connection = psycopg2.connect(host=hostname, port=port, database=database, user=username, password=password)
 cursor = connection.cursor()
 
+=======
+
+st.title("Email/SMS Spam Classifier")
+
+# Download required NLTK resources (you can comment this out after the first run)
+>>>>>>> 0c21885755d965e8603577ce04977f1d64bdb867
 # nltk.download('stopwords')
 # nltk.download('punkt')
 
@@ -43,6 +50,7 @@ def transform_text(text):
 
     return " ".join(y)
 
+<<<<<<< HEAD
 def retrieve_model(model_name):
     cursor.execute("SELECT model_data FROM model_storage WHERE model_name = %s", (model_name,))
     model_data = cursor.fetchone()
@@ -59,8 +67,13 @@ def load_model_from_db(model_name):
 # Load models from the database
 tfidf = load_model_from_db(r'C:\Users\saura\OneDrive\Documents\GitHub\SMS-fraud-detection\sms-fraud-detection\vectorizer.pkl')
 model = load_model_from_db(r'C:\Users\saura\OneDrive\Documents\GitHub\SMS-fraud-detection\sms-fraud-detection\model.pkl')
+=======
 
-st.title("Email/SMS Spam Classifier")
+
+tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
+model = pickle.load(open('model.pkl', 'rb'))
+>>>>>>> 0c21885755d965e8603577ce04977f1d64bdb867
+
 
 input_sms = st.text_area('Enter the message')
 
