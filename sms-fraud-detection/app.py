@@ -6,7 +6,7 @@ import psycopg2
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
-# Database connection details
+
 hostname = 'dpg-csksslu8ii6s7380o05g-a.oregon-postgres.render.com'
 port = 5432
 database = 'fraud_detection_binary_files'
@@ -63,6 +63,7 @@ def load_model_from_db(model_name):
 # Load models from the database
 tfidf = load_model_from_db(r'C:\Users\saura\OneDrive\Documents\GitHub\SMS-fraud-detection\sms-fraud-detection\vectorizer.pkl')
 model = load_model_from_db(r'C:\Users\saura\OneDrive\Documents\GitHub\SMS-fraud-detection\sms-fraud-detection\model.pkl')
+
 
 
 tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
