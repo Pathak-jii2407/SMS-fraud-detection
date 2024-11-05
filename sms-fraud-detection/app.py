@@ -9,6 +9,7 @@ import os
 # Ensure you have downloaded the required NLTK resources
 nltk.download('punkt')
 nltk.download('stopwords')
+nltk.download('punkt_tab')
 
 ps = PorterStemmer()
 
